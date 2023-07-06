@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLCSSJS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="formSec">
+        <div class="formDiv">
+            <center><h1>Register</h1></center>
+            <div class="form">
+                <input id="email" type="email" name="email" placeholder="Enter your Email">
+                <input id="password" name="password" type="password" placeholder="Enter your Password">
+                <input type="submit" onclick="getdata()">
+            </div>
+            <center>
+                <p>Email: <span id="dispemail"></span></p>
+            <p>Password: <span id="disppassword"></span></p>
+            </center>
+
+        </div>
+    </section>
+
+    <script>
+        function getdata(){
+            email = document.getElementById('email').value;
+            password = document.getElementById('password').value;
+            document.getElementById('dispemail').innerText=email;
+            document.getElementById('disppassword').innerText=password;
+        }
+    </script>
+</body>
+</html>
