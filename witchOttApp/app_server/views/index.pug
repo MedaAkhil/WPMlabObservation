@@ -1,6 +1,74 @@
-extends layout
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Scrollable Cards Example
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    style.
+      .scrollable-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        margin-bottom: 20px;
+      }
+      .card {
+        display: inline-block;
+        margin-right: 10px;
+        width: 250px;
+      }
+      .card-img-top {
+        max-width: 100%;
+        height: auto;
+      }
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a.navbar-brand(href="#") My Site
+        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href="#") Home
+            li.nav-item
+              a.nav-link(href="#") Movies
+            li.nav-item
+              a.nav-link(href="#") Web Series
 
-block content
-  h1= title
-  p Welcome to #{title}
-  script(src='/javascripts/bootstrap.min.js')
+    .container
+      .scrollable-container
+        .card
+          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          .card-body
+            h5.card-title Card 1
+            p.card-text Lorem ipsum dolor sit amet.
+        .card
+          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          .card-body
+            h5.card-title Card 2
+            p.card-text Pellentesque habitant morbi.
+        .card
+          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          .card-body
+            h5.card-title Card 3
+            p.card-text Vestibulum tortor quam.
+        .card
+          img.card-img-top(src="https://imgs.search.brave.com/-ubwA6j-IXAw-aPpigoKMBVNG6StM-XE5LyzFFhXVHE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw", alt="Card image")
+          .card-body
+            h5.card-title Card 1
+            p.card-text Lorem ipsum dolor sit amet.
+        .card
+          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          .card-body
+            h5.card-title Card 2
+            p.card-text Pellentesque habitant morbi.
+        .card
+          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          .card-body
+            h5.card-title Card 3
+            p.card-text Vestibulum tortor quam.
+
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
