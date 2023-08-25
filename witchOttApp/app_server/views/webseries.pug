@@ -1,1 +1,87 @@
-p this is web series page
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Responsive Cards with Navigation
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+    style.
+      .scroll-container {
+        display: flex;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .scroll-container::-webkit-scrollbar {
+        display: none;
+      }
+      .card {
+        flex: 0 0 250px;
+        margin: 10px;
+      }
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a.navbar-brand(href="#") My Site
+        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href="#") Home
+            li.nav-item
+              a.nav-link(href="#") Movies
+            li.nav-item
+              a.nav-link(href="#") Web Series
+    .container
+      h2.text-center mt-3 Horizontally Scrollable Cards
+      .scroll-container
+        .card-deck
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 1
+              p.card-text Lorem ipsum dolor sit amet.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 2
+              p.card-text Pellentesque habitant morbi tristique.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 3
+              p.card-text Vestibulum tortor quam, feugiat vitae.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 4
+              p.card-text Donec eu libero sit amet quam.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 5
+              p.card-text Aenean ultricies mi vitae est.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 5
+              p.card-text Aenean ultricies mi vitae est.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 5
+              p.card-text Aenean ultricies mi vitae est.
+          .card
+            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+            .card-body
+              h5.card-title Card 5
+              p.card-text Aenean ultricies mi vitae est.
+      .text-center
+        button.btn.btn-primary.mr-3 Previous
+        button.btn.btn-primary Next
