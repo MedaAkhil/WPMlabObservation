@@ -5,6 +5,7 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title Scrollable Cards Example
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles.css")
     style.
       .scrollable-container {
         overflow-x: auto;
@@ -35,11 +36,14 @@ html(lang="en")
               a.nav-link(href="#") Movies
             li.nav-item
               a.nav-link(href="#") Web Series
+    br
+    br
+    br
 
     .container
       .scrollable-container
         .card
-          img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
+          img.card-img-top.imgcenter(src="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/2141/1572141-i-f631d7a36bb6", alt="Card image")
           .card-body
             h5.card-title Card 1
             p.card-text Lorem ipsum dolor sit amet.
