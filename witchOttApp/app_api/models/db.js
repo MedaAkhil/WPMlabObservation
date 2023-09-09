@@ -6,7 +6,7 @@ const readLine = require('readline');
 // if (process.env.NODE_ENV === 'production') {
 //     dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
 //   }
-mongoose.connect('mongodb://127.0.0.1:27017/witch', {
+mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   // Remove the following line:

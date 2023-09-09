@@ -1,28 +1,28 @@
 const mongoose = require('mongoose');
-const Loc = mongoose.model('Movies');
+const Movies = mongoose.model('Movies');
 
-const locationsListByDistance = async (req, res) => {
-  const lng = parseFloat(req.query.lng);
-  const lat = parseFloat(req.query.lat);
-  const near = {
-    type: "Point",
-    coordinates: [lng, lat]
-  };
-  const geoOptions = {
-    distanceField: "distance.calculated",
-    key: 'coords',
-    spherical: true,
-    maxDistance: 20000,
-    limit: 10
-  };
-  if (!lng || !lat) {
-    return res
-      .status(404)
-      .json({ "message": "lng and lat query parameters are required" });
-  }
+const moviesList = async (req, res) => {
+  // const lng = parseFloat(req.query.lng);
+  // const lat = parseFloat(req.query.lat);
+  // const near = {
+  //   type: "Point",
+  //   coordinates: [lng, lat]
+  // };
+  // const geoOptions = {
+  //   distanceField: "distance.calculated",
+  //   key: 'coords',
+  //   spherical: true,
+  //   maxDistance: 20000,
+  //   limit: 10
+  // };
+  // if (!lng || !lat) {
+  //   return res
+  //     .status(404)
+  //     .json({ "message": "lng and lat query parameters are required" });
+  // }
 
   try {
-    const results = await Loc.aggregate([
+    const results = await Movies.aggregate([
       {
         $geoNear: {
           near,
@@ -37,7 +37,7 @@ const locationsListByDistance = async (req, res) => {
         posterImageUrl: result.posterImageUrl,
         movieDescription: result.movieDescription,
         movieDescription: result.movieDescription,
-        releaseDate: `${result.distance.calculated.toFixed()}m`
+        releaseDate: result.releaseDate
       }
     });
     res
@@ -51,7 +51,7 @@ const locationsListByDistance = async (req, res) => {
 };
 
 const moviesCreate = (req, res) => {
-  Loc.create({
+  Movies.create({
     title: req.body.title,
     posterImageUrl: req.body.posterImageUrl,
     movieDescription: req.body.movieDescription,
@@ -76,100 +76,116 @@ const moviesCreate = (req, res) => {
   });
 };
 
-const moviesReadOne = (req, res) => {
-    Loc
-      .findById(req.params.movieid)
-      .exec((err, movie) => {
-        if (!movie) {
-          return res
-            .status(404)
-            .json({"message": "movie not found"});
-        } else if (err) {
-          return res
-            .status(404)
-            .json(err);
-        } else {
-          return res
-            .status(200)
-            .json(movie);
-        }
-      });
+// const moviesReadOne = (req, res) => {
+//   Movies.findById(req.params.movieid)
+//   .exec((err, movie) => {
+//     if (!movie) {
+//       return res
+//         .status(404)
+//         .json({"message": "movie not found"});
+//     } else if (err) {
+//       return res
+//         .status(404)
+//         .json(err);
+//     } else {
+//       return res
+//         .status(200)
+//         .json(movie);
+//     }
+//   });
+// };
+const moviesReadOne = async (req, res) => {
+  try {
+    const movie = await Movies.findById(req.params.movieid).exec();
+    if (!movie) {
+      return res.status(404).json({"message": "movie not found"});
+    }
+    return res.status(200).json(movie);
+  } catch (err) {
+    return res.status(404).json(err);
+  }
 };
 
+
 const moviesUpdateOne = (req, res) => {
-  if (!req.params.movieid) {
+  const movieId = req.params.movieid;
+
+  // Check if movieid is provided
+  if (!movieId) {
     return res
-      .status(404)
-      .json({
-        "message": "Not found, movieid is required"
-      });
+      .status(400) // Changed to 400 Bad Request
+      .json({ "message": "movieid is required" });
   }
-  Loc
-    .findById(req.params.movieid)
-    .select('-reviews -rating')
-    .exec((err, movie) => {
-      if (!movie) {
+
+  // Use findByIdAndUpdate to simplify the code
+  Movies.findByIdAndUpdate(
+    movieId,
+    {
+      $set: {
+        title: req.body.title,
+        posterImageUrl: req.body.posterImageUrl,
+        movieDescription: req.body.movieDescription,
+        genere: req.body.genere.split(","),
+        cast: {
+          title: req.body.title,
+          rating: req.body.rating,
+          reviewText: req.body.reviewText,
+        },
+      },
+    },
+    { new: true }, // Return the updated document
+    (err, updatedMovie) => {
+      if (err) {
         return res
-          .status(404)
-          .json({
-            "message": "movieid not found"
-          });
-      } else if (err) {
-        return res
-          .status(400)
+          .status(500) // Changed to 500 Internal Server Error
           .json(err);
       }
-      movie.title= req.body.title,
-      movie.posterImageUrl = req.body.posterImageUrl,
-      movie.movieDescription = req.body.movieDescription,
-      movie.genere = req.body.genere.split(","),
-      movie.cast = {
-        title: req.body.title,
-        rating: req.body.rating,
-        reviewText: req.body.reviewText,
-      };
-      movie.save((err, loc) => {
-        if (err) {
-          res
-            .status(404)
-            .json(err);
-        } else {
-          res
-            .status(200)
-            .json(loc);
-        }
-      });
+      if (!updatedMovie) {
+        return res
+          .status(404)
+          .json({ "message": "movieid not found" });
+      }
+
+      res
+        .status(200)
+        .json(updatedMovie);
     }
   );
 };
 
+
 const moviesDeleteOne = (req, res) => {
-  const {movieid} = req.params;
-  if (movieid) {
-    Loc
-      .findByIdAndRemove(movieid)
-      .exec((err, movie) => {
-          if (err) {
-            return res
-              .status(404)
-              .json(err);
-          }
-          res
-            .status(204)
-            .json(null);
-        }
-    );
-  } else {
-    res
-      .status(404)
-      .json({
-        "message": "No Movie"
-      });
+  const movieId = req.params.movieid;
+
+  // Check if movieid is provided
+  if (!movieId) {
+    return res
+      .status(400) // Changed to 400 Bad Request
+      .json({ "message": "movieid is required" });
   }
+
+  // Use findByIdAndRemove to simplify the code
+  Movies.findByIdAndRemove(movieId, (err, deletedMovie) => {
+    if (err) {
+      return res
+        .status(500) // Changed to 500 Internal Server Error
+        .json(err);
+    }
+    if (!deletedMovie) {
+      return res
+        .status(404)
+        .json({ "message": "movieid not found" });
+    }
+
+    res
+      .status(204) // Changed to 204 No Content
+      .json(null);
+  });
 };
 
+
 module.exports = {
-  locationsListByDistance,
+  moviesList,
   moviesCreate,
   moviesReadOne,
   moviesUpdateOne,

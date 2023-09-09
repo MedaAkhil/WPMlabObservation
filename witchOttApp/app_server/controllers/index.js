@@ -100,16 +100,12 @@ const renderHomepage = (req, res, responseBody) => {
 };
 
 const homePage = (req, res) => {
-  const path = '/api/movies';
+  const path = '/api/movies/64fb03ad9caaa478f56ab72a';
   const requestOptions = {
-    url: `${apiOptions.server}${path}`,
+    url: "http://localhost:3000/api/movies/64fb03ad9caaa478f56ab72a",
     method: 'GET',
     json: {},
-    qs: {
-      lng: -0.7992599,
-      lat: 51.378091,
-      maxDistance: 20
-    }
+    
   };
   request(
     requestOptions,
@@ -126,55 +122,58 @@ const homePage = (req, res) => {
   );
 };
 
-const renderMoviePage = (req, res, responseBody) => {
+const renderMoviePage = (req, res, responseBody) => {   
+  console.log(4);
   let message = null;
   if (!(responseBody instanceof Array)) {
     message = 'API lookup error';
-    responseBody = [];
+    // responseBody = [];
   } else {
     if (!responseBody.length) {
       message = 'No Movies found!';
     }
   }
-  res.render('moviespage',
-    {
-      title: 'Loc8r - find a place to work with wifi',
-      pageHeader: {
-        title: 'Loc8r',
-        strapLine: 'Find places to work with wifi near you!'
-      },
-      sidebar: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for.",
-      locations: responseBody,
-      message
-    }
-  );
+  console.log(responseBody);
+  console.log(5);
+  res.render('moviepage',{responseBody,message});
 };
 
-const moviePage = (req, res) => {
+const moviePage = async (req, res) => {
+  body=[];
+  console.log(1);
   const path = '/api/movies';
   const requestOptions = {
-    url: `${apiOptions.server}${path}`,
+    url: 'http://localhost:3000/api/movies/64fb03ad9caaa478f56ab72a',
     method: 'GET',
     json: {},
-    qs: {
-      lng: -0.7992599,
-      lat: 51.378091,
-      maxDistance: 20
-    }
+    
   };
-  request(
-    requestOptions,
-    (err, {statusCode}, body) => {
-      let data = [];
-      if (statusCode === 200 && body.length) {
-        data = body.map( (item) => {
-          item.distance = formatDistance(item.distance);
-          return item;
-        });
-      }
-      renderMoviePage(req, res, data);
+  console.log(2);
+    await request(
+  requestOptions,
+  (err, {statusCode}, body) => {
+    if (err) {
+      console.error('Error:', err);
+      // Handle the error, e.g., display an error message on the front end
+      return;
     }
-  );
+
+    if (statusCode === 200 && body.length) {
+      console.log(body);
+      // Process and render the data
+      // renderMoviePage(req,res,body);
+    } else {
+      console.log(3);
+      // Handle the case where the response is not as expected
+      console.error('Unexpected response:', statusCode, body);
+      console.log("error");
+      renderMoviePage(req,res,body)
+      // Display an appropriate message on the front end
+    }
+  },
+  
+);
+
 }
 
 

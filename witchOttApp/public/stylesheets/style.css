@@ -8,6 +8,9 @@ a {
   color: #00B7FF;
   
 }
+::-webkit-scrollbar {
+  width: 1px;
+}
 
 /* .navbar-light navbar-brand (
   
