@@ -36,7 +36,6 @@ const movieCardSchema = new mongoose.Schema({
     },
     posterImageUrl:String,  
     movieDescription:String,
-    movieDescription:[String],
     releaseDate:{
         type:Date,
         default:Date.now,

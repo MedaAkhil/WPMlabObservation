@@ -2,53 +2,40 @@ const mongoose = require('mongoose');
 const Movies = mongoose.model('Movies');
 
 const moviesList = async (req, res) => {
-  // const lng = parseFloat(req.query.lng);
-  // const lat = parseFloat(req.query.lat);
-  // const near = {
-  //   type: "Point",
-  //   coordinates: [lng, lat]
-  // };
-  // const geoOptions = {
-  //   distanceField: "distance.calculated",
-  //   key: 'coords',
-  //   spherical: true,
-  //   maxDistance: 20000,
-  //   limit: 10
-  // };
-  // if (!lng || !lat) {
-  //   return res
-  //     .status(404)
-  //     .json({ "message": "lng and lat query parameters are required" });
-  // }
-
   try {
-    const results = await Movies.aggregate([
-      {
-        $geoNear: {
-          near,
-          ...geoOptions
-        }
+    const results = await Movies.find();
+    const movies = results.map(result => ({
+      _id: result._id,
+      title: result.title,
+      posterImageUrl: result.posterImageUrl,
+      movieDescription: result.movieDescription,
+      releaseDate: result.releaseDate,
+      cast:{
+        title:result.title,
+        heroName:result.heroName,
+        heroImageUrl:result.heroImageUrl,
+        heroinname:result.heroinname,
+        heroinImageUrl:result.heroinImageUrl,
+        director:result.director,
+        directorImageUrl:result.directorImageUrl,
+      },
+      reveiws:{
+        title:result.title,
+        rating:result.rating,
+        reviewText:result.reviewText,
+        createdOn:result.createdOn,
       }
-    ]);
-    const movies = results.map(result => {
-      return {
-        _id: result._id,
-        title: result.title,
-        posterImageUrl: result.posterImageUrl,
-        movieDescription: result.movieDescription,
-        movieDescription: result.movieDescription,
-        releaseDate: result.releaseDate
-      }
-    });
-    res
-      .status(200)
-      .json(movies);
+    }));
+    // console.log(result.reviewText);
+    res.status(200).json(movies);
+    // console.log(result.reviewText)
   } catch (err) {
-    res
-      .status(404)
-      .json(err);
+    res.status(500).json({ error: 'An error occurred while fetching movies.' });
   }
 };
+
+// module.exports = moviesList;
+
 
 const moviesCreate = (req, res) => {
   Movies.create({

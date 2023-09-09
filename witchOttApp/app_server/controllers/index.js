@@ -42,20 +42,9 @@ const apiOptions = {
   server: 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-  apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
+  apiOptions.server = 'https://witch.cyclic.cloud';
 }
 
-const formatDistance = (distance) => {
-  let thisDistance = 0;
-  let unit = 'm';
-  if (distance > 1000) {
-    thisDistance = parseFloat(distance / 1000).toFixed(1);
-    unit = 'km';
-  } else {
-    thisDistance = Math.floor(distance);
-  }
-  return thisDistance + unit;
-};
 
 const showError = (req, res, status) => {
   let title = '';
@@ -100,9 +89,9 @@ const renderHomepage = (req, res, responseBody) => {
 };
 
 const homePage = (req, res) => {
-  const path = '/api/movies/64fb03ad9caaa478f56ab72a';
+  const path = '/api/webseries';
   const requestOptions = {
-    url: "http://localhost:3000/api/movies/64fb03ad9caaa478f56ab72a",
+    url: `${apiOptions.server}${path}`,
     method: 'GET',
     json: {},
     
@@ -113,7 +102,7 @@ const homePage = (req, res) => {
       let data = [];
       if (statusCode === 200 && body.length) {
         data = body.map( (item) => {
-          item.distance = formatDistance(item.distance);
+          item.distance = item.distance;
           return item;
         });
       }
@@ -127,23 +116,24 @@ const renderMoviePage = (req, res, responseBody) => {
   let message = null;
   if (!(responseBody instanceof Array)) {
     message = 'API lookup error';
+    console.log(10);
     // responseBody = [];
   } else {
     if (!responseBody.length) {
       message = 'No Movies found!';
     }
   }
+  res.render('moviepage',{responseBody,message});
   console.log(responseBody);
   console.log(5);
-  res.render('moviepage',{responseBody,message});
 };
 
-const moviePage = async (req, res) => {
+const moviesPage = async (req, res) => {
   body=[];
   console.log(1);
   const path = '/api/movies';
   const requestOptions = {
-    url: 'http://localhost:3000/api/movies/64fb03ad9caaa478f56ab72a',
+    url: `${apiOptions.server}${path}`,
     method: 'GET',
     json: {},
     
@@ -162,12 +152,12 @@ const moviePage = async (req, res) => {
       console.log(body);
       // Process and render the data
       // renderMoviePage(req,res,body);
+      renderMoviePage(req,res,body)
     } else {
       console.log(3);
       // Handle the case where the response is not as expected
       console.error('Unexpected response:', statusCode, body);
       console.log("error");
-      renderMoviePage(req,res,body)
       // Display an appropriate message on the front end
     }
   },
@@ -218,7 +208,7 @@ const webSeriesPage = (req, res) => {
       let data = [];
       if (statusCode === 200 && body.length) {
         data = body.map( (item) => {
-          item.distance = formatDistance(item.distance);
+          item.distance = item.distance;
           return item;
         });
       }
@@ -321,7 +311,7 @@ const doAddReview = (req, res) => {
 
 module.exports = {
   homePage,
-  moviePage,
+  moviesPage,
   webSeriesPage,
   addReview,
   doAddReview,
