@@ -3,6 +3,7 @@ html
     title= responseBody[0].title
     
   body
+    h1= responseBody['cast']
     h1= responseBody[0].title
     img(src=responseBody[0].posterImageUrl, alt="Movie Poster")
     p.movie-description= responseBody[0].movieDescription
@@ -27,3 +28,31 @@ html
     h2 Director
     p= `Director: ${responseBody[0].director}`
     img(src=responseBody[0].directorImageUrl, alt="Director Image")
+
+
+
+    h1= responseBody['cast']
+    h1= responseBody[1].title
+    img(src=responseBody[1].posterImageUrl, alt="Movie Poster")
+    p.movie-description= responseBody[1].movieDescription
+    p Release Date: #{responseBody[1].releaseDate}
+    
+    h2 Cast
+    ul
+      each castMember in responseBody[1].cast
+        li
+          p= `Title: ${castMember.title}`
+          p= `Hero Name: ${castMember.heroName}`
+          img(src=castMember.heroImageUrl, alt=`${castMember.heroName} Image`)
+
+    h2 Reviews
+    each review in responseBody[1].reveiws
+      div.review
+        p= `Title: ${review.title}`
+        p= `Rating: ${review.rating}`
+        p.review-text= `Review: ${review.reviewText}`
+        p.created-on= `Created On: ${review.createdOn}`
+
+    h2 Director
+    p= `Director: ${responseBody[1].director}`
+    img(src=responseBody[1].directorImageUrl, alt="Director Image")

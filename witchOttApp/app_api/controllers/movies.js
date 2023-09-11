@@ -4,6 +4,7 @@ const Movies = mongoose.model('Movies');
 const moviesList = async (req, res) => {
   try {
     const results = await Movies.find();
+    
     const movies = results.map(result => ({
       _id: result._id,
       title: result.title,
@@ -26,13 +27,12 @@ const moviesList = async (req, res) => {
         createdOn:result.createdOn,
       }
     }));
-    // console.log(result.reviewText);
     res.status(200).json(movies);
-    // console.log(result.reviewText)
   } catch (err) {
     res.status(500).json({ error: 'An error occurred while fetching movies.' });
   }
 };
+
 
 // module.exports = moviesList;
 

@@ -63,3 +63,4 @@ mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2
   // connect();
   
   require('./movies');
+  require('./webseries');
