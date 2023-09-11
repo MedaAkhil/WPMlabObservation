@@ -8,28 +8,7 @@ const webSeriesList = async (req, res) => {
     try {
       const wsresults = await WebSeries.find();
       
-      const webseries = wsresults.map(result => ({
-        _id: result._id,
-        title: result.title,
-        posterImageUrl: result.posterImageUrl,
-        movieDescription: result.movieDescription,
-        releaseDate: result.releaseDate,
-        cast:{
-          title:result.title,
-          heroName:result.heroName,
-          heroImageUrl:result.heroImageUrl,
-          heroinname:result.heroinname,
-          heroinImageUrl:result.heroinImageUrl,
-          director:result.director,
-          directorImageUrl:result.directorImageUrl,
-        },
-        reveiws:{
-          title:result.title,
-          rating:result.rating,
-          reviewText:result.reviewText,
-          createdOn:result.createdOn,
-        }
-      }));
+      
       const webseries = results.map(result => ({
         _id: result._id,
         title: result.title,

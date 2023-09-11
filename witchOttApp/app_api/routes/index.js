@@ -8,7 +8,7 @@ router.route('/movies').get(ctrlMovies.moviesList).post(ctrlMovies.moviesCreate)
 router.route('/movies/:movieid').get(ctrlMovies.moviesReadOne).put(ctrlMovies.moviesUpdateOne).delete(ctrlMovies.moviesDeleteOne);
 //WebSeries
 router.route('/webseries').get(strlWebSeries.webSeriesList).post(strlWebSeries.webSeriesCreate);
-router.route('/webseries/:webseriesid').get(strlWebSeries.webSeriesReadOne).put(strlWebSeries.moviesUpdateOne).delete(strlWebSeries.webSeriesDeleteOne);
+router.route('/webseries/:webseriesid').get(strlWebSeries.webSeriesReadOne).put(strlWebSeries.webSeriesUpdateOne).delete(strlWebSeries.webSeriesDeleteOne);
 // reviews
 router.route('/movies/:movieid/reviews').post(ctrlReviews.reviewsCreate);
 router.route('/movies/:movieid/reviews/:reviewid').get(ctrlReviews.reviewsReadOne).put(ctrlReviews.reviewsUpdateOne).delete(ctrlReviews.reviewsDeleteOne);

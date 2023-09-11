@@ -2,25 +2,19 @@ const mongoose = require('mongoose');
 const readLine = require('readline');
 
 
-// const dbURL = 'mongodb://127.0.0.1:27017/witch';
-// if (process.env.NODE_ENV === 'production') {
-//     dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
-//   }
 mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // Remove the following line:
-  // useCreateIndex: true,
+
 });
 
   
   mongoose.connection.on('connected', () => {
-    console.log('connected');
+    console.log(`MongoDB connected at mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority`);
   });
   
   mongoose.connection.on('error', err => {
     console.log('error: ' + err);
-    // return connect();
   });
   
   mongoose.connection.on('disconnected', () => {
@@ -64,3 +58,7 @@ mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2
   
   require('./movies');
   require('./webseries');
+  // const dbURL = 'mongodb://127.0.0.1:27017/witch';
+  // if (process.env.NODE_ENV === 'production') {
+  //     dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
+  //   }
