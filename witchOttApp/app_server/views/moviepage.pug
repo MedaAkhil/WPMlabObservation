@@ -1,58 +1,163 @@
-html
+//- html
+//-   head
+//-     title= responseBody[0].title
+    
+//-   body
+//-     h1= responseBody['cast']
+//-     h1= responseBody[0].title
+//-     img(src=responseBody[0].posterImageUrl, alt="Movie Poster")
+//-     p.movie-description= responseBody[0].movieDescription
+//-     p Release Date: #{responseBody[0].releaseDate}
+    
+//-     h2 Cast
+//-     ul
+//-       each castMember in responseBody[0].cast
+//-         li
+//-           p= `Title: ${castMember.title}`
+//-           p= `Hero Name: ${castMember.heroName}`
+//-           img(src=castMember.heroImageUrl, alt=`${castMember.heroName} Image`)
+
+//-     h2 Reviews
+//-     each review in responseBody[0].reveiws
+//-       div.review
+//-         p= `Title: ${review.title}`
+//-         p= `Rating: ${review.rating}`
+//-         p.review-text= `Review: ${review.reviewText}`
+//-         p.created-on= `Created On: ${review.createdOn}`
+
+//-     h2 Director
+//-     p= `Director: ${responseBody[0].director}`
+//-     img(src=responseBody[0].directorImageUrl, alt="Director Image")
+
+
+
+//-     h1= responseBody['cast']
+//-     h1= responseBody[1].title
+//-     img(src=responseBody[1].posterImageUrl, alt="Movie Poster")
+//-     p.movie-description= responseBody[1].movieDescription
+//-     p Release Date: #{responseBody[1].releaseDate}
+    
+//-     h2 Cast
+//-     ul
+//-       each castMember in responseBody[1].cast
+//-         li
+//-           p= `Title: ${castMember.title}`
+//-           p= `Hero Name: ${castMember.heroName}`
+//-           img(src=castMember.heroImageUrl, alt=`${castMember.heroName} Image`)
+
+//-     h2 Reviews
+//-     each review in responseBody[1].reveiws
+//-       div.review
+//-         p= `Title: ${review.title}`
+//-         p= `Rating: ${review.rating}`
+//-         p.review-text= `Review: ${review.reviewText}`
+//-         p.created-on= `Created On: ${review.createdOn}`
+
+//-     h2 Director
+//-     p= `Director: ${responseBody[1].director}`
+//-     img(src=responseBody[1].directorImageUrl, alt="Director Image")
+doctype html
+html(lang="en")
   head
-    title= responseBody[0].title
-    
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Witch
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="stylesheet", href="styles.css")
+    style.
+      .scrollable-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+        margin-bottom: 20px;
+      }
+      ::-webkit-scrollbar {
+        width: 1px;
+        height:1px
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+ 
+      ::-webkit-scrollbar-thumb {
+        background: blue; 
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: white; 
+      }
+      .card {
+        display: inline-block;
+        margin-right: 10px;
+        width: 250px;
+        overflow: hidden;
+      }
+      .card-img-top {
+        max-width: 100%;
+        height: auto;
+      }
+      body{
+        back
+      }
   body
-    h1= responseBody['cast']
-    h1= responseBody[0].title
-    img(src=responseBody[0].posterImageUrl, alt="Movie Poster")
-    p.movie-description= responseBody[0].movieDescription
-    p Release Date: #{responseBody[0].releaseDate}
-    
-    h2 Cast
-    ul
-      each castMember in responseBody[0].cast
-        li
-          p= `Title: ${castMember.title}`
-          p= `Hero Name: ${castMember.heroName}`
-          img(src=castMember.heroImageUrl, alt=`${castMember.heroName} Image`)
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a.navbar-brand(href="#") Witch 
+        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        #navbarNav.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link(href="/") Home
+            li.nav-item
+              a.nav-link(href="/movies") Movies
+            li.nav-item
+              a.nav-link(href="/webseries") Web Series 
+    br
+    br
+    //- ------------------------------------------   THIS IS MOVIES LIST ---------------------------------------------------
+    .container
+      h3 Movies
+      .scrollable-container
+        .card
+          img.card-img-top.imgcenter(src=mdata[0].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[0].title}
+            p.card-text #{mdata[0].movieDescription}
+        .card
+          img.card-img-top(src=mdata[1].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[1].title}
+            p.card-text #{mdata[1].movieDescription}
+        .card
+          img.card-img-top(src=mdata[2].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[2].title}
+            p.card-text #{mdata[2].movieDescription}
+        .card
+          img.card-img-top(src=mdata[3].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[3].title}
+            p.card-text #{mdata[3].movieDescription}
+        .card
+          img.card-img-top(src=mdata[4].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[4].title}
+            p.card-text #{mdata[4].movieDescription}
+        .card
+          img.card-img-top(src=mdata[5].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[5].title}
+            p.card-text #{mdata[5].movieDescription}
+        .card
+          img.card-img-top(src=mdata[6].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{mdata[6].title}
+            p.card-text #{mdata[6].movieDescription}
+    //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
 
-    h2 Reviews
-    each review in responseBody[0].reveiws
-      div.review
-        p= `Title: ${review.title}`
-        p= `Rating: ${review.rating}`
-        p.review-text= `Review: ${review.reviewText}`
-        p.created-on= `Created On: ${review.createdOn}`
 
-    h2 Director
-    p= `Director: ${responseBody[0].director}`
-    img(src=responseBody[0].directorImageUrl, alt="Director Image")
-
-
-
-    h1= responseBody['cast']
-    h1= responseBody[1].title
-    img(src=responseBody[1].posterImageUrl, alt="Movie Poster")
-    p.movie-description= responseBody[1].movieDescription
-    p Release Date: #{responseBody[1].releaseDate}
-    
-    h2 Cast
-    ul
-      each castMember in responseBody[1].cast
-        li
-          p= `Title: ${castMember.title}`
-          p= `Hero Name: ${castMember.heroName}`
-          img(src=castMember.heroImageUrl, alt=`${castMember.heroName} Image`)
-
-    h2 Reviews
-    each review in responseBody[1].reveiws
-      div.review
-        p= `Title: ${review.title}`
-        p= `Rating: ${review.rating}`
-        p.review-text= `Review: ${review.reviewText}`
-        p.created-on= `Created On: ${review.createdOn}`
-
-    h2 Director
-    p= `Director: ${responseBody[1].director}`
-    img(src=responseBody[1].directorImageUrl, alt="Director Image")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
