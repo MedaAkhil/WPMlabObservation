@@ -82,6 +82,28 @@ const renderHomepage = (req, res, responseBody) => {
   );
 };
 
+const homePageweb = (req, res, {mdata}) => {
+  const path = '/api/webseries';
+  const requestOptions = {
+    url: `${apiOptions.server}${path}`,
+    method: 'GET',
+    json: {},
+    
+  };
+  request(
+    requestOptions,
+    (err, {statusCode}, body) => {
+      let data = [];
+      if (statusCode === 200 && body.length) {
+        wdata = body.map( (item) => {
+          return item;
+        });
+      }
+      renderHomepage(req, res, {mdata,wdata});
+    }
+  );
+};
+
 const homePage = (req, res) => {
   const path = '/api/movies';
   const requestOptions = {
@@ -95,12 +117,11 @@ const homePage = (req, res) => {
     (err, {statusCode}, body) => {
       let data = [];
       if (statusCode === 200 && body.length) {
-        data = body.map( (item) => {
-          item.distance = item.distance;
+        mdata = body.map( (item) => {
           return item;
         });
       }
-      renderHomepage(req, res, data);
+      homePageweb(req, res, {mdata});
     }
   );
 };
