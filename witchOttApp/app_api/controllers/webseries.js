@@ -9,11 +9,11 @@ const webSeriesList = async (req, res) => {
       const wsresults = await WebSeries.find();
       
       
-      const webseries = results.map(result => ({
+      const webseries = wsresults.map(result => ({
         _id: result._id,
         title: result.title,
         posterImageUrl: result.posterImageUrl,
-        movieDescription: result.movieDescription,
+        webSeriesDescription: result.webSeriesDescription,
         releaseDate: result.releaseDate,
         cast:{
           title:result.title,
@@ -33,6 +33,7 @@ const webSeriesList = async (req, res) => {
       }));
       // console.log(result.reviewText);
       res.status(200).json(webseries);
+      console.log(webseries)
       // console.log(result.reviewText)
     } catch (err) {
       res.status(500).json({ error: 'An error occurred while fetching movies.' });

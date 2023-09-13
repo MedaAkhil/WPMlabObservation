@@ -3,85 +3,144 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Responsive Cards with Navigation
+    title Witch
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
-    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
-    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
-    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+    link(rel="stylesheet", href="styles.css")
     style.
-      .scroll-container {
-        display: flex;
-        overflow-x: scroll;
+      .scrollable-container {
+        overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
+        white-space: nowrap;
+        margin-bottom: 20px;
       }
-      .scroll-container::-webkit-scrollbar {
-        display: none;
-      }
-      .card {
-        flex: 0 0 250px;
-        margin: 10px;
+      ::-webkit-scrollbar {
+        width: 1px;
+        height:1px
       }
 
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+ 
+      ::-webkit-scrollbar-thumb {
+        background: blue; 
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: white; 
+      }
+      .card {
+        display: inline-block;
+        margin-right: 10px;
+        width: 250px;
+        overflow: hidden;
+      }
+      .card-img-top {
+        max-width: 100%;
+        height: auto;
+      }
+      body{
+        back
+      }
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
-        a.navbar-brand(href="#") My Site
+        a.navbar-brand(href="#") Witch 
         button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
             li.nav-item
-              a.nav-link(href="#") Home
+              a.nav-link(href="/") Home
             li.nav-item
-              a.nav-link(href="#") Movies
+              a.nav-link(href="/movies") Movies
             li.nav-item
-              a.nav-link(href="#") Web Series
+              a.nav-link(href="/webseries") Web Series 
+    br
+    br
+    br
+    
+    //- ------------------------------------------   THIS IS MOVIES LIST ---------------------------------------------------
     .container
-      h2.text-center mt-3 Horizontally Scrollable Cards
-      .scroll-container
-        .card-deck
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 1
-              p.card-text Lorem ipsum dolor sit amet.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 2
-              p.card-text Pellentesque habitant morbi tristique.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 3
-              p.card-text Vestibulum tortor quam, feugiat vitae.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 4
-              p.card-text Donec eu libero sit amet quam.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 5
-              p.card-text Aenean ultricies mi vitae est.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 5
-              p.card-text Aenean ultricies mi vitae est.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 5
-              p.card-text Aenean ultricies mi vitae est.
-          .card
-            img.card-img-top(src="https://via.placeholder.com/150", alt="Card image")
-            .card-body
-              h5.card-title Card 5
-              p.card-text Aenean ultricies mi vitae est.
-      .text-center
-        button.btn.btn-primary.mr-3 Previous
-        button.btn.btn-primary Next
+      h3 Movies
+      .scrollable-container
+        .card
+          img.card-img-top.imgcenter(src=responseBody[0].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[0].title}
+            p.card-text #{responseBody[0].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[1].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[1].title}
+            p.card-text #{responseBody[1].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[2].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[2].title}
+            p.card-text #{responseBody[2].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[3].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[3].title}
+            p.card-text #{responseBody[3].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[4].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[4].title}
+            p.card-text #{responseBody[4].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[5].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[5].title}
+            p.card-text #{responseBody[5].webSeriesDescription}
+        .card
+          img.card-img-top(src=responseBody[6].posterImageUrl, alt="Card image")
+          .card-body
+            h5.card-title #{responseBody[6].title}
+            p.card-text #{responseBody[6].webSeriesDescription }
+    //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
+    //- .container
+    //-   h3 Web Series
+    //-   .scrollable-container
+    //-     .card
+    //-       img.card-img-top.imgcenter(src=responseBody[0].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[0].title}
+    //-         p.card-text #{responseBody[0].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[1].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[1].title}
+    //-         p.card-text #{responseBody[1].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[2].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[2].title}
+    //-         p.card-text #{responseBody[2].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[3].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[3].title}
+    //-         p.card-text #{responseBody[3].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[4].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[4].title}
+    //-         p.card-text #{responseBody[4].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[5].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[5].title}
+    //-         p.card-text #{responseBody[5].movieDescription}
+    //-     .card
+    //-       img.card-img-top(src=responseBody[6].posterImageUrl, alt="Card image")
+    //-       .card-body
+    //-         h5.card-title #{responseBody[6].title}
+    //-         p.card-text #{responseBody[6].movieDescription}
+
+
+
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")

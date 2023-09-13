@@ -64,6 +64,10 @@ const showError = (req, res, status) => {
   });
 };
 
+
+
+
+
 const renderHomepage = (req, res, responseBody) => {
   let message = null;
   if (!(responseBody instanceof Array)) {
@@ -100,6 +104,10 @@ const homePage = (req, res) => {
     }
   );
 };
+
+
+
+
 
 const renderMoviePage = (req, res, responseBody) => {   
   console.log(4);
@@ -153,7 +161,6 @@ const moviesPage = async (req, res) => {
   },
   
 );
-
 }
 
 
@@ -167,30 +174,14 @@ const renderWebSeriesPage = (req, res, responseBody) => {
       message = 'No Movies found!';
     }
   }
-  res.render('webseries',
-    {
-      title: 'Loc8r - find a place to work with wifi',
-      pageHeader: {
-        title: 'Loc8r',
-        strapLine: 'Find places to work with wifi near you!'
-      },
-      sidebar: "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for.",
-      locations: responseBody,
-      message
-    }
-  );
+  res.render('webseries',{responseBody});
 };
 const webSeriesPage = (req, res) => {
   const path = '/api/webseries';
   const requestOptions = {
     url: `${apiOptions.server}${path}`,
     method: 'GET',
-    json: {},
-    qs: {
-      lng: -0.7992599,
-      lat: 51.378091,
-      maxDistance: 20
-    }
+    json: {}
   };
   request(
     requestOptions,
@@ -198,7 +189,6 @@ const webSeriesPage = (req, res) => {
       let data = [];
       if (statusCode === 200 && body.length) {
         data = body.map( (item) => {
-          item.distance = item.distance;
           return item;
         });
       }
@@ -206,6 +196,10 @@ const webSeriesPage = (req, res) => {
     }
   );
 }
+
+
+
+
 const renderDetailPage = (req, res, location) => {
   res.render('location-info',
     {
