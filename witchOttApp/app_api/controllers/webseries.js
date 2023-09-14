@@ -33,7 +33,6 @@ const webSeriesList = async (req, res) => {
       }));
       // console.log(result.reviewText);
       res.status(200).json(webseries);
-      console.log(webseries)
       // console.log(result.reviewText)
     } catch (err) {
       res.status(500).json({ error: 'An error occurred while fetching movies.' });

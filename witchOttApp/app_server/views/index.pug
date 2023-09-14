@@ -34,6 +34,7 @@ html(lang="en")
         margin-right: 10px;
         width: 250px;
         overflow: hidden;
+        color:black;
       }
       .card-img-top {
         max-width: 100%;
@@ -62,41 +63,48 @@ html(lang="en")
     .container
       h3 Movies
       .scrollable-container
-        .card
-          img.card-img-top.imgcenter(src=mdata[0].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[0].title}
-            p.card-text #{mdata[0].movieDescription}
-        .card
-          img.card-img-top(src=mdata[1].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[1].title}
-            p.card-text #{mdata[1].movieDescription}
-        .card
-          img.card-img-top(src=mdata[2].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[2].title}
-            p.card-text #{mdata[2].movieDescription}
-        .card
-          img.card-img-top(src=mdata[3].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[3].title}
-            p.card-text #{mdata[3].movieDescription}
-        .card
-          img.card-img-top(src=mdata[4].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[4].title}
-            p.card-text #{mdata[4].movieDescription}
-        .card
-          img.card-img-top(src=mdata[5].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[5].title}
-            p.card-text #{mdata[5].movieDescription}
-        .card
-          img.card-img-top(src=mdata[6].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{mdata[6].title}
-            p.card-text #{mdata[6].movieDescription}
+        a(href=`/movie/${mdata[0]._id}`)
+          .card
+            img.card-img-top.imgcenter(src=mdata[0].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[0].title}
+              p.card-text #{mdata[0].movieDescription}
+        a(href=`/movie/${mdata[1]._id}`)
+          .card
+            img.card-img-top(src=mdata[1].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[1].title}
+              p.card-text #{mdata[1].movieDescription}
+        a(href=`/movie/${mdata[2]._id}`)    
+          .card
+            img.card-img-top(src=mdata[2].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[2].title}
+              p.card-text #{mdata[2].movieDescription}
+        a(href=`/movie/${mdata[3]._id}`)
+          .card
+            img.card-img-top(src=mdata[3].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[3].title}
+              p.card-text #{mdata[3].movieDescription}
+        a(href=`/movie/${mdata[4]._id}`)
+          .card
+            img.card-img-top(src=mdata[4].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[4].title}
+              p.card-text #{mdata[4].movieDescription}
+        a(href=`/movie/${mdata[5]._id}`)
+          .card
+            img.card-img-top(src=mdata[5].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[5].title}
+              p.card-text #{mdata[5].movieDescription}
+        a(href=`/movie/${mdata[6]._id}`)
+          .card
+            img.card-img-top(src=mdata[6].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[6].title}
+              p.card-text #{mdata[6].movieDescription}
     //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
     .container
       h3 Web Series
@@ -136,7 +144,6 @@ html(lang="en")
           .card-body
             h5.card-title #{wdata[6].title}
             p.card-text #{wdata[6].movieDescription}
-
 
 
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")

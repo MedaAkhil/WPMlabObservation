@@ -130,12 +130,10 @@ const homePage = (req, res) => {
 
 
 
-const renderMoviePage = (req, res, responseBody) => {   
-  console.log(4);
+const renderMoviesPage = (req, res, responseBody) => {   
   let message = null;
   if (!(responseBody instanceof Array)) {
     message = 'API lookup error';
-    console.log(10);
     // responseBody = [];
   } else {
     if (!responseBody.length) {
@@ -143,13 +141,10 @@ const renderMoviePage = (req, res, responseBody) => {
     }
   }
   res.render('moviepage',{responseBody,message});
-  console.log(responseBody);
-  console.log(5);
 };
 
 const moviesPage = async (req, res) => {
   body=[];
-  console.log(1);
   const path = '/api/movies';
   const requestOptions = {
     url: `${apiOptions.server}${path}`,
@@ -157,7 +152,6 @@ const moviesPage = async (req, res) => {
     json: {},
     
   };
-  console.log(2);
     await request(
   requestOptions,
   (err, {statusCode}, body) => {
@@ -167,22 +161,74 @@ const moviesPage = async (req, res) => {
       return;
     }
 
-    if (statusCode === 200 && body.length) {
-      console.log(body);
+    if (statusCode === 200 ) {
       // Process and render the data
       // renderMoviePage(req,res,body);
-      renderMoviePage(req,res,body)
+      renderMoviesPage(req,res,body)
     } else {
-      console.log(3);
       // Handle the case where the response is not as expected
       console.error('Unexpected response:', statusCode, body);
-      console.log("error");
+      console.log("error in movie req");
       // Display an appropriate message on the front end
     }
   },
   
 );
 }
+
+
+
+
+const renderMoviePage = (req, res, responseBody) => {   
+  let message = null;
+  if (!(responseBody instanceof Array)) {
+    message = 'API lookup error';
+    // responseBody = [];
+  } else {
+    if (!responseBody.length) {
+      message = 'No Movies found!';
+    }
+  }
+  cast=responseBody["cast"];
+  console.log(cast);
+  res.render('onemoviepage',{responseBody,cast});
+};
+
+const moviePage = async (req, res) => {
+  body=[];
+  console.log(req.params.movieid);
+  const path = `/api/movies/${req.params.movieid}`;
+  const requestOptions = {
+    url: `${apiOptions.server}${path}`,
+    method: 'GET',
+    json: {},
+    
+  };
+    await request(
+  requestOptions,
+  (err, {statusCode}, body) => {
+    if (err) {
+      console.error('Error:', err);
+      // Handle the error, e.g., display an error message on the front end
+      return;
+    }
+
+    if (true) {
+      // Process and render the data
+      // renderMoviePage(req,res,body);
+      renderMoviePage(req,res,body);
+     } //else {
+    //   // Handle the case where the response is not as expected
+    //   console.error('Unexpected response1:', statusCode, body);
+    //   console.log("error req movie page");
+    //   // Display an appropriate message on the front end
+    // }
+  },
+  
+);
+}
+
+
 
 
 const renderWebSeriesPage = (req, res, responseBody) => {
@@ -317,6 +363,7 @@ const doAddReview = (req, res) => {
 module.exports = {
   homePage,
   moviesPage,
+  moviePage,
   webSeriesPage,
   addReview,
   doAddReview,
