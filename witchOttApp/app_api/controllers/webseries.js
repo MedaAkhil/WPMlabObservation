@@ -39,6 +39,17 @@ const webSeriesList = async (req, res) => {
     }
   };
 
+  const webSeriesReadOne = async (req, res) => {
+    try {
+      const movie = await WebSeries.findById(req.params.webseriesid).exec();
+      if (!movie) {
+        return res.status(404).json({"message": "movie not found"});
+      }
+      return res.status(200).json(movie);
+    } catch (err) {
+      return res.status(404).json(err);
+    }
+  };
   const webSeriesCreate = (req, res) => {
     Movies.create({
       title: req.body.title,
@@ -65,17 +76,6 @@ const webSeriesList = async (req, res) => {
     });
   };
 
-  const webSeriesReadOne = async (req, res) => {
-    try {
-      const movie = await Movies.findById(req.params.movieid).exec();
-      if (!movie) {
-        return res.status(404).json({"message": "movie not found"});
-      }
-      return res.status(200).json(movie);
-    } catch (err) {
-      return res.status(404).json(err);
-    }
-  };
   
   
   const webSeriesUpdateOne = (req, res) => {

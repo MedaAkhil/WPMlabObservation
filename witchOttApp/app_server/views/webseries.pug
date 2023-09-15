@@ -34,13 +34,11 @@ html(lang="en")
         margin-right: 10px;
         width: 250px;
         overflow: hidden;
+        color:black;
       }
       .card-img-top {
         max-width: 100%;
         height: auto;
-      }
-      body{
-        back
       }
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -62,43 +60,50 @@ html(lang="en")
     
     //- ------------------------------------------   THIS IS MOVIES LIST ---------------------------------------------------
     .container
-      h3 Movies
+      h3 Web Series
       .scrollable-container
-        .card
-          img.card-img-top.imgcenter(src=responseBody[0].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[0].title}
-            p.card-text #{responseBody[0].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[1].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[1].title}
-            p.card-text #{responseBody[1].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[2].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[2].title}
-            p.card-text #{responseBody[2].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[3].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[3].title}
-            p.card-text #{responseBody[3].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[4].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[4].title}
-            p.card-text #{responseBody[4].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[5].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[5].title}
-            p.card-text #{responseBody[5].webSeriesDescription}
-        .card
-          img.card-img-top(src=responseBody[6].posterImageUrl, alt="Card image")
-          .card-body
-            h5.card-title #{responseBody[6].title}
-            p.card-text #{responseBody[6].webSeriesDescription }
+        a(href=`/webseries/${wdata[0]._id}`)
+          .card
+            img.card-img-top.imgcenter(src=wdata[0].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[0].title}
+              p.card-text #{wdata[0].webSeriesDescription}
+        a(href=`/webseries/${wdata[1]._id}`)
+          .card
+            img.card-img-top(src=wdata[1].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[1].title}
+              p.card-text #{wdata[1].webSeriesDescription}
+        a(href=`/webseries/${wdata[2]._id}`)
+          .card
+            img.card-img-top(src=wdata[2].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[2].title}
+              p.card-text #{wdata[2].webSeriesDescription}
+        a(href=`/webseries/${wdata[3]._id}`)
+          .card
+            img.card-img-top(src=wdata[3].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[3].title}
+              p.card-text #{wdata[3].webSeriesDescription}
+        a(href=`/webseries/${wdata[4]._id}`)
+          .card
+            img.card-img-top(src=wdata[4].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[4].title}
+              p.card-text #{wdata[4].webSeriesDescription}
+        a(href=`/webseries/${wdata[5]._id}`)
+          .card
+            img.card-img-top(src=wdata[5].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[5].title}
+              p.card-text #{wdata[5].webSeriesDescription}
+        a(href=`/webseries/${wdata[6]._id}`)
+          .card
+            img.card-img-top(src=wdata[6].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[6].title}
+              p.card-text #{wdata[6].webSeriesDescription}
     //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
     //- .container
     //-   h3 Web Series

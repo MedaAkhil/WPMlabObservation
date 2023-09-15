@@ -190,7 +190,6 @@ const renderMoviePage = (req, res, responseBody) => {
     }
   }
   cast=responseBody["cast"];
-  console.log(cast);
   res.render('onemoviepage',{responseBody,cast});
 };
 
@@ -263,6 +262,54 @@ const webSeriesPage = (req, res) => {
     }
   );
 }
+
+
+
+
+const renderoneWebSeriesPage = (req, res, responseBody) => {
+  let message = null;
+  if (!(responseBody instanceof Array)) {
+    message = 'API lookup error';
+    // responseBody = [];
+  } else {
+    if (!responseBody.length) {
+      message = 'No Movies found!';
+    }
+  }
+  cast=responseBody["cast"];
+  res.render('onewebseries',{responseBody,cast});
+};
+const onewebSeriesPage = async (req, res) => {
+  const path = `/api/webseries/${req.params.webseriesid}`;
+  const requestOptions = {
+    url: `${apiOptions.server}${path}`,
+    method: 'GET',
+    json: {}
+  };
+  await request(
+    requestOptions,
+    (err, {statusCode}, body) => {
+      if (err) {
+        console.error('Error:', err);
+        // Handle the error, e.g., display an error message on the front end
+        return;
+      }
+  
+      if (true) {
+        // Process and render the data
+        // renderMoviePage(req,res,body);
+        renderoneWebSeriesPage(req,res,body);
+       } //else {
+      //   // Handle the case where the response is not as expected
+      //   console.error('Unexpected response1:', statusCode, body);
+      //   console.log("error req movie page");
+      //   // Display an appropriate message on the front end
+      // }
+    },
+    
+  );
+}
+
 
 
 
@@ -365,6 +412,7 @@ module.exports = {
   moviesPage,
   moviePage,
   webSeriesPage,
+  onewebSeriesPage,
   addReview,
   doAddReview,
 };

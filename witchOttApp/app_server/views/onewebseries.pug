@@ -92,11 +92,45 @@ html(lang="en")
         margin-right: 10px;
         width: 250px;
         overflow: hidden;
-        color:black;
       }
       .card-img-top {
         max-width: 100%;
         height: auto;
+      }
+      .backgroundformove{
+        width:90%;
+        height:90vh;
+        border-radius:10px;
+      }
+      .moviedispsec{
+        color:white;
+        margin:0 5% 0 5%;
+      }
+      .title{
+        margin-top:-150px;
+        margin-left:-920px;
+
+      }
+      .moviediscr{
+        margin-left:-400px;
+        width:60%;
+      }
+      .titlediv{
+      }
+      .castdiv{
+        color:black;
+        display: flex;
+        list-style-type: none;
+        text-decoration:none;
+      }
+      .maintitlesec{
+        width:90%;
+        background:transparent;
+        backdrop-filter:blur(20px);
+
+      }
+      li{
+        margin:1px solid black ;
       }
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -112,55 +146,24 @@ html(lang="en")
               a.nav-link(href="/movies") Movies
             li.nav-item
               a.nav-link(href="/webseries") Web Series 
-    br
-    br
-    //- ------------------------------------------   THIS IS MOVIES LIST ---------------------------------------------------
-    .container
-      h3 Movies
-      .scrollable-container
-        a(href=`/movie/${mdata[0]._id}`)
-          .card
-            img.card-img-top.imgcenter(src=mdata[0].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[0].title}
-              p.card-text #{mdata[0].movieDescription}
-        a(href=`/movie/${mdata[1]._id}`)
-          .card
-            img.card-img-top(src=mdata[1].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[1].title}
-              p.card-text #{mdata[1].movieDescription}
-        a(href=`/movie/${mdata[2]._id}`)    
-          .card
-            img.card-img-top(src=mdata[2].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[2].title}
-              p.card-text #{mdata[2].movieDescription}
-        a(href=`/movie/${mdata[3]._id}`)
-          .card
-            img.card-img-top(src=mdata[3].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[3].title}
-              p.card-text #{mdata[3].movieDescription}
-        a(href=`/movie/${mdata[4]._id}`)
-          .card
-            img.card-img-top(src=mdata[4].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[4].title}
-              p.card-text #{mdata[4].movieDescription}
-        a(href=`/movie/${mdata[5]._id}`)
-          .card
-            img.card-img-top(src=mdata[5].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[5].title}
-              p.card-text #{mdata[5].movieDescription}
-        a(href=`/movie/${mdata[6]._id}`)
-          .card
-            img.card-img-top(src=mdata[6].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{mdata[6].title}
-              p.card-text #{mdata[6].movieDescription}
-    //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
+    
+    //- ------------------------------------------   THIS IS MOVIES LIST ----------;-----------------------------------------
+    center
+        section.moviedispsec
+            img.backgroundformove(src=responseBody.posterImageUrl)
+            section.maintitlesec
+                div.titlediv
+                    h1.title #{responseBody.title}
+                    h6.moviediscr Movie Discription
+                    p.moviediscr #{responseBody.webSeriesDescription}
+                div.castdiv
+                    h5 Cast
+                    ul 
+                        li=cast[0].heroName
+                        li=cast[0].heroinname
+                        li=cast[0].director
+          
+
 
 
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
