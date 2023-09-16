@@ -3,7 +3,6 @@ const WebSeries = mongoose.model('WebSeries');
 
 
 
-
 const webSeriesList = async (req, res) => {
     try {
       const wsresults = await WebSeries.find();
@@ -39,6 +38,9 @@ const webSeriesList = async (req, res) => {
     }
   };
 
+
+
+
   const webSeriesReadOne = async (req, res) => {
     try {
       const movie = await WebSeries.findById(req.params.webseriesid).exec();
@@ -50,6 +52,9 @@ const webSeriesList = async (req, res) => {
       return res.status(404).json(err);
     }
   };
+
+
+  
   const webSeriesCreate = (req, res) => {
     Movies.create({
       title: req.body.title,
@@ -81,14 +86,12 @@ const webSeriesList = async (req, res) => {
   const webSeriesUpdateOne = (req, res) => {
     const movieId = req.params.movieid;
   
-    // Check if movieid is provided
     if (!movieId) {
       return res
-        .status(400) // Changed to 400 Bad Request
+        .status(400) 
         .json({ "message": "movieid is required" });
     }
   
-    // Use findByIdAndUpdate to simplify the code
     Movies.findByIdAndUpdate(
       movieId,
       {
@@ -104,11 +107,11 @@ const webSeriesList = async (req, res) => {
           },
         },
       },
-      { new: true }, // Return the updated document
+      { new: true }, 
       (err, updatedMovie) => {
         if (err) {
           return res
-            .status(500) // Changed to 500 Internal Server Error
+            .status(500) 
             .json(err);
         }
         if (!updatedMovie) {
@@ -128,18 +131,16 @@ const webSeriesList = async (req, res) => {
   const webSeriesDeleteOne = (req, res) => {
     const movieId = req.params.movieid;
   
-    // Check if movieid is provided
     if (!movieId) {
       return res
-        .status(400) // Changed to 400 Bad Request
+        .status(400) 
         .json({ "message": "movieid is required" });
     }
   
-    // Use findByIdAndRemove to simplify the code
     Movies.findByIdAndRemove(movieId, (err, deletedMovie) => {
       if (err) {
         return res
-          .status(500) // Changed to 500 Internal Server Error
+          .status(500)
           .json(err);
       }
       if (!deletedMovie) {
@@ -149,19 +150,17 @@ const webSeriesList = async (req, res) => {
       }
   
       res
-        .status(204) // Changed to 204 No Content
+        .status(204) 
         .json(null);
     });
   };
   
 
 
-
-  module.exports = {
-    webSeriesList,
-    webSeriesCreate,
-    webSeriesDeleteOne,
-    webSeriesReadOne,
-    webSeriesUpdateOne
-  
-  };
+module.exports = {
+  webSeriesList,
+  webSeriesCreate,
+  webSeriesDeleteOne,
+  webSeriesReadOne,
+  webSeriesUpdateOne
+};

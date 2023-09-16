@@ -54,11 +54,6 @@ mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2
     });
   });
   
-  // connect();
   
   require('./movies');
   require('./webseries');
-  // const dbURL = 'mongodb://127.0.0.1:27017/witch';
-  // if (process.env.NODE_ENV === 'production') {
-  //     dbURL = process.env.DB_HOST || process.env.MONGODB_URI;
-  //   }

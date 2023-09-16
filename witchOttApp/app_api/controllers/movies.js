@@ -34,7 +34,6 @@ const moviesList = async (req, res) => {
 };
 
 
-// module.exports = moviesList;
 
 
 const moviesCreate = (req, res) => {
@@ -43,7 +42,6 @@ const moviesCreate = (req, res) => {
     posterImageUrl: req.body.posterImageUrl,
     movieDescription: req.body.movieDescription,
     genere: req.body.genere.split(","),
-    // facilities.split(","),
     cast: {
         title: req.body.title,
         rating: req.body.rating,
