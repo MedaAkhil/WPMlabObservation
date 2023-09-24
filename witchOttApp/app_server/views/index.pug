@@ -105,6 +105,18 @@ html(lang="en")
             .card-body
               h5.card-title #{mdata[6].title}
               p.card-text #{mdata[6].movieDescription}
+        a(href=`/movie/${mdata[7]._id}`)
+          .card
+            img.card-img-top(src=mdata[7].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[7].title}
+              p.card-text #{mdata[7].movieDescription}
+        a(href=`/movie/${mdata[8]._id}`)
+          .card
+            img.card-img-top(src=mdata[8].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[8].title}
+              p.card-text #{mdata[8].movieDescription}
     //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
     .container
       h3 Web Series

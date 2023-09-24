@@ -2,11 +2,24 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Witch
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
-    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="stylesheet" href="styles.css")
     style.
+      *{
+        pading: 0;
+        margin:0;
+      }
+      .navbar{
+        z-index:10;
+      }
+      iframe {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
       .scrollable-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -21,9 +34,9 @@ html(lang="en")
       ::-webkit-scrollbar-track {
         background: #f1f1f1; 
       }
- 
+
       ::-webkit-scrollbar-thumb {
-        background: blue; 
+        background: white; 
       }
 
       ::-webkit-scrollbar-thumb:hover {
@@ -40,11 +53,37 @@ html(lang="en")
         max-width: 100%;
         height: auto;
       }
+      .webseriessection{
+        margin-top: -40vh;
+      }
+      frame{
+        position:absolute;
+        height: 100%;
+        z-index: -10;
+      }
+      .scrollable-container1{
+        background-color: transparent;
+        backdrop-filter: blur(10px);
+        margin-top: 40vh;
+        border-radius:10px;
+        color:white;
+        padding: 0 0 0 30px;
+      }
+      .entrymoviesec{
+        height:100vh;
+        width: 30%;
+      }
+      .card1{
+        width:30%
+      }
+      .card-body1{
+        width:100px;
+      }
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
         a.navbar-brand(href="#") Witch 
-        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
@@ -57,95 +96,72 @@ html(lang="en")
     br
     br
     br
-    
+
     //- ------------------------------------------   THIS IS MOVIES LIST ---------------------------------------------------
-    .container
-      h3 Web Series
-      .scrollable-container
-        a(href=`/webseries/${wdata[0]._id}`)
-          .card
-            img.card-img-top.imgcenter(src=wdata[0].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[0].title}
-              p.card-text #{wdata[0].webSeriesDescription}
-        a(href=`/webseries/${wdata[1]._id}`)
-          .card
-            img.card-img-top(src=wdata[1].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[1].title}
-              p.card-text #{wdata[1].webSeriesDescription}
-        a(href=`/webseries/${wdata[2]._id}`)
-          .card
-            img.card-img-top(src=wdata[2].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[2].title}
-              p.card-text #{wdata[2].webSeriesDescription}
-        a(href=`/webseries/${wdata[3]._id}`)
-          .card
-            img.card-img-top(src=wdata[3].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[3].title}
-              p.card-text #{wdata[3].webSeriesDescription}
-        a(href=`/webseries/${wdata[4]._id}`)
-          .card
-            img.card-img-top(src=wdata[4].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[4].title}
-              p.card-text #{wdata[4].webSeriesDescription}
-        a(href=`/webseries/${wdata[5]._id}`)
-          .card
-            img.card-img-top(src=wdata[5].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[5].title}
-              p.card-text #{wdata[5].webSeriesDescription}
-        a(href=`/webseries/${wdata[6]._id}`)
-          .card
-            img.card-img-top(src=wdata[6].posterImageUrl, alt="Card image")
-            .card-body
-              h5.card-title #{wdata[6].title}
-              p.card-text #{wdata[6].webSeriesDescription}
-    //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
-    //- .container
-    //-   h3 Web Series
-    //-   .scrollable-container
-    //-     .card
-    //-       img.card-img-top.imgcenter(src=responseBody[0].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[0].title}
-    //-         p.card-text #{responseBody[0].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[1].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[1].title}
-    //-         p.card-text #{responseBody[1].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[2].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[2].title}
-    //-         p.card-text #{responseBody[2].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[3].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[3].title}
-    //-         p.card-text #{responseBody[3].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[4].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[4].title}
-    //-         p.card-text #{responseBody[4].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[5].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[5].title}
-    //-         p.card-text #{responseBody[5].movieDescription}
-    //-     .card
-    //-       img.card-img-top(src=responseBody[6].posterImageUrl, alt="Card image")
-    //-       .card-body
-    //-         h5.card-title #{responseBody[6].title}
-    //-         p.card-text #{responseBody[6].movieDescription}
+    //- a(href=`/webseries/${wdata[0]._id}`)
+    section.entrymoviesec
+      iframe(src="https://www.youtube.com/embed/MgMuDs0jxCs?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&iv_load_policy=3" frameborder="0", allowfullscreen)
+      .scrollable-container1
+        .card1x
+          .card-body1x
+            h5.card-title1x #{wdata[0].title}
+            p.card-text1x #{wdata[0].webSeriesDescription}
+            p.card-text1x #{new Date(wdata[0].releaseDate).getFullYear()}
+            p.card-text1x Lang: #{"Telugu"}, #{"English"}
+            p.card-text1x Genere: #{"Action"}, #{"Thriller"}
+    section.webseriessection 
+      .container
+        h3 Web Series
+        .scrollable-container
+          //- a(href=`/webseries/${wdata[0]._id}`)
+          //-   .card
+          //-     img.card-img-top.imgcenter(src=wdata[0].posterImageUrl, alt="Card image")
+          //-     .card-body
+          //-       h5.card-title #{wdata[0].title}
+          //-       p.card-text #{wdata[0].webSeriesDescription}
+          a(href=`/webseries/${wdata[1]._id}`)
+            .card
+              img.card-img-top(src=wdata[1].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[1].title}
+                p.card-text #{wdata[1].webSeriesDescription}
+          a(href=`/webseries/${wdata[2]._id}`)
+            .card
+              img.card-img-top(src=wdata[2].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[2].title}
+                p.card-text #{wdata[2].webSeriesDescription}
+          a(href=`/webseries/${wdata[3]._id}`)
+            .card
+              img.card-img-top(src=wdata[3].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[3].title}
+                p.card-text #{wdata[3].webSeriesDescription}
+          a(href=`/webseries/${wdata[4]._id}`)
+            .card
+              img.card-img-top(src=wdata[4].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[4].title}
+                p.card-text #{wdata[4].webSeriesDescription}
+          a(href=`/webseries/${wdata[5]._id}`)
+            .card
+              img.card-img-top(src=wdata[5].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[5].title}
+                p.card-text #{wdata[5].webSeriesDescription}
+          a(href=`/webseries/${wdata[6]._id}`)
+            .card
+              img.card-img-top(src=wdata[6].posterImageUrl, alt="Card image")
+              .card-body
+                h5.card-title #{wdata[6].title}
+                p.card-text #{wdata[6].webSeriesDescription}
+
 
 
 
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
     script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js")
+
+
+

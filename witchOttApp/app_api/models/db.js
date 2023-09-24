@@ -2,15 +2,21 @@ const mongoose = require('mongoose');
 const readLine = require('readline');
 
 
-mongoose.connect('mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority', {
+const dbURI = "mongodb://127.0.0.1/witch"
+
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 
 });
-
+  var message = "mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority"
+  if (dbURI == "mongodb://127.0.0.1/witch"){
+      message = 'MongoDB connected at:mongodb://127.0.0.1/witch'
+    }
+    
   
   mongoose.connection.on('connected', () => {
-    console.log(`MongoDB connected at mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority`);
+    console.log(message);
   });
   
   mongoose.connection.on('error', err => {
