@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const readLine = require('readline');
 
 
-const dbURI = "mongodb://127.0.0.1/witch"
+// const dbURI = "mongodb://127.0.0.1/witch"
+const dbURI = "mongodb+srv://Akhilaesh:ZGcUW2vs3R5hxPGJ@myatlasclusteredu.wv2czbn.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose.connect(dbURI, {
   useNewUrlParser: true,
