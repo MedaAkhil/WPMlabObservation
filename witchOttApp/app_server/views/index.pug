@@ -63,6 +63,12 @@ html(lang="en")
     .container
       h3 Movies
       .scrollable-container
+        a(href=`/movie/${mdata[9]._id}`)
+          .card
+            img.card-img-top.imgcenter(src=mdata[9].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{mdata[9].title}
+              p.card-text #{mdata[9].movieDescription}
         a(href=`/movie/${mdata[0]._id}`)
           .card
             img.card-img-top.imgcenter(src=mdata[0].posterImageUrl, alt="Card image")
@@ -163,7 +169,24 @@ html(lang="en")
             .card-body
               h5.card-title #{wdata[6].title}
               p.card-text #{wdata[6].webSeriesDescription}
-
+        a(href=`/webseries/${wdata[7]._id}`)
+          .card
+            img.card-img-top(src=wdata[7].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[7].title}
+              p.card-text #{wdata[7].webSeriesDescription}
+        a(href=`/webseries/${wdata[8]._id}`)
+          .card
+            img.card-img-top(src=wdata[8].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[8].title}
+              p.card-text #{wdata[8].webSeriesDescription}
+        a(href=`/webseries/${wdata[7]._id}`)
+          .card
+            img.card-img-top(src=wdata[7].posterImageUrl, alt="Card image")
+            .card-body
+              h5.card-title #{wdata[7].title}
+              p.card-text #{wdata[7].webSeriesDescription}
 
     script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js")
     script(src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js")

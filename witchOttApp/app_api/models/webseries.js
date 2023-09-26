@@ -14,8 +14,6 @@ const webSeriesCastSchema = new mongoose.Schema({
     heroinImageUrl:String,
     director:String,
     directorImageUrl:String,
-    
-    
 })
 const reviewSchema = new mongoose.Schema({
     title: String,

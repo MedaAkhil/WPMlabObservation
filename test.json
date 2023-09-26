@@ -1,0 +1,22 @@
+{
+  "_id": { "$oid": "651300bb228e1cb2e39733e3" },
+  "title": "School Of Lies",
+  "posterImageUrl": "https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/3984/1533984-i-8f1d840c40cc",
+  "webSeriesDescription": "After attempting an attack on the Home Minister, Baali is on the run. What happens when he chooses the path of violence?",
+  "releaseDate": "02/02/2023",
+  "cast": {
+    "title": "School Of Lies",
+    "heroName": "Aamir Bashir",
+    "heroImageUrl": "https://imgs.search.brave.com/M4sJf54tUntg6aNELwqKYaAA6rORzchyhqFq8bnnmIg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9h/L2E1L0FhbWlyX0Jh/c2hpci5qcGc",
+    "heroinname": "Nimrat Kaur",
+    "heroinImageUrl": "https://imgs.search.brave.com/q3mzsOCT7gUwTJ-FBmPrWXSszezMXZxqUdd3tRVhTv4/rs:fit:560:320:1/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi82LzZjL05p/bXJhdF9LYXVyX3Nu/YXBwZWRfYXR0ZW5k/aW5nX3RoZV9MYWtt/ZV9GYXNoaW9uX1dl/ZWtfMjAxOF8lMjgx/MSUyOS5qcGcvNTEy/cHgtTmltcmF0X0th/dXJfc25hcHBlZF9h/dHRlbmRpbmdfdGhl/X0xha21lX0Zhc2hp/b25fV2Vla18yMDE4/XyUyODExJTI5Lmpw/Zw",
+    "director": "Avinash Arun",
+    "directorImageUrl": "https://imgs.search.brave.com/anuZPXWwF4CTGxuklBHRs8eieqJNDhXJsPGYOCN4HWg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1ESTVZV0kw/TmpjdE5qVTRaaTAw/TUdOa0xXSTRPVGt0/TURNMVlqZzNPR1l6/WldSaFhrRXlYa0Zx/Y0dkZVFYVnlNelk1/TlRJNU5EQUAuanBn"
+  },
+  "reviews": {
+    "title": "School Of Lies",
+    "rating": { "$numberInt": "4" },
+    "reviewText": "It is a facinating web series",
+    "createdOn": "02/04/2023"
+  }
+}

@@ -1,14 +1,14 @@
 //- html
 //-   head
 //-     title= responseBody[0].title
-    
+
 //-   body
 //-     h1= responseBody['cast']
 //-     h1= responseBody[0].title
 //-     img(src=responseBody[0].posterImageUrl, alt="Movie Poster")
 //-     p.movie-description= responseBody[0].movieDescription
 //-     p Release Date: #{responseBody[0].releaseDate}
-    
+
 //-     h2 Cast
 //-     ul
 //-       each castMember in responseBody[0].cast
@@ -36,7 +36,7 @@
 //-     img(src=responseBody[1].posterImageUrl, alt="Movie Poster")
 //-     p.movie-description= responseBody[1].movieDescription
 //-     p Release Date: #{responseBody[1].releaseDate}
-    
+
 //-     h2 Cast
 //-     ul
 //-       each castMember in responseBody[1].cast
@@ -60,11 +60,14 @@ doctype html
 html(lang="en")
   head
     meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     title Witch
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
-    link(rel="stylesheet", href="styles.css")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css")
+    link(rel="stylesheet" href="styles.css")
     style.
+      *{
+        list-style-type: none;
+      }
       .scrollable-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -79,7 +82,7 @@ html(lang="en")
       ::-webkit-scrollbar-track {
         background: #f1f1f1; 
       }
- 
+
       ::-webkit-scrollbar-thumb {
         background: blue; 
       }
@@ -107,34 +110,43 @@ html(lang="en")
         margin:0 5% 0 5%;
       }
       .title{
-        margin-top:-150px;
-        margin-left:-920px;
-
+        margin: 0 0 0 -15%;
       }
       .moviediscr{
-        margin-left:-400px;
-        width:60%;
+        margin: 0 0 0 -10%;
+        text-align: justify;
+        width:70%;
       }
       .titlediv{
+        width: 100%;
+        height:20vh;
+        text-align: left;
       }
       .castdiv{
         color:black;
-        margin-left:-1000px
+        margin: 0 0 0 -13%;
+        text-align: justify;
       }
       .maintitlesec{
         width:90%;
+        width:100%;
+        padding: 0 0 0 20%;
         background:transparent;
+        margin: -10% 0 0 0;
         backdrop-filter:blur(20px);
 
       }
       li{
         margin:1px solid black ;
       }
+      .moviediscrhding{
+        margin: 20px 0 10px -13%;
+      }
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container
         a.navbar-brand(href="/") Witch 
-        button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav.ml-auto
@@ -144,30 +156,30 @@ html(lang="en")
               a.nav-link(href="/movies") Movies
             li.nav-item
               a.nav-link(href="/webseries") Web Series 
-    
+
     //- ------------------------------------------   THIS IS MOVIES LIST ----------;-----------------------------------------
     center
-        section.moviedispsec
-            img.backgroundformove(src=responseBody.posterImageUrl)
-            section.maintitlesec
-                div.titlediv
-                    h1.title #{responseBody.title}
-                    h6.moviediscr Movie Discription
-                    p.moviediscr #{responseBody.movieDescription}
-                div.castdiv
-                    h5 Cast
-                    ul 
-                        li=cast[0].heroName
-                        li=cast[0].heroinname
-                        li=cast[0].director
-          
+      section.moviedispsec
+        img.backgroundformove(src=responseBody.posterImageUrl)
+        section.maintitlesec
+          div.titlediv
+            h2.title #{responseBody.title}
+            h6.moviediscrhding Movie Discription
+            p.moviediscr #{responseBody.movieDescription}
+          div.castdiv
+            h5 Cast
+            ul 
+              li #{cast[0].heroName}
+              li=cast[0].heroinname
+              li=cast[0].director
+
     //-   .scrollable-container
     //-     .card
     //-       img.card-img-top.imgcenter(src=responseBody.posterImageUrl, alt="Card image")
     //-       .card-body
     //-         h5.card-title #{responseBody.title}
     //-         p.card-text #{responseBody.movieDescription}
-        
+
     //- -----------------------------------------------------   THIS IS WEB SERIES PAGE   ----------------------------------------
 
 
